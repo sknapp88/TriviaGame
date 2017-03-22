@@ -3,7 +3,7 @@ window.onload = function(){
 	$("#reset").click(trivia.reset);
 }
 
-var counter = 1;
+var counter = 0;
 
 var trivia = {
 	questions: [
@@ -50,8 +50,8 @@ var trivia = {
 	continue: function(){
 		var multipleChoice = $("<div>");
 		console.log(counter);
-		var currentQ = trivia.questions[counter].question;
 		counter ++;
+		var currentQ = trivia.questions[counter].question;
 		$(".main-body").html("<h3>"+currentQ+"</h3>");
 		console.log(counter);
 		$(".main-body").append(multipleChoice);
