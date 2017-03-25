@@ -4,6 +4,9 @@ window.onload = function(){
 }
 
 var counter = 0;
+var timeCounnt;
+var l=0;
+
 
 var trivia = {
 	questions: [
@@ -40,43 +43,68 @@ var trivia = {
 		for (i=0;i<=3;i++){
 			qSpace.append("<li>" + trivia.questions[0].answers[i]+ "</li>");
 			multipleChoice.append(qSpace);
-			console.log(i);
+			// console.log(i);
 		}
 		multipleChoice.append(continueGame);
 		// console.log(counter);
 		$("#continue").click(trivia.continue);
+		$("li").on("click", trivia.selection);
+		console.log("booyah");
+		// $("li").click(trivia.selection);
 	},
 
 	continue: function(){
-		var multipleChoice = $("<div>");
-		console.log(counter);
-		counter ++;
-		var currentQ = trivia.questions[counter].question;
-		$(".main-body").html("<h3>"+currentQ+"</h3>");
-		console.log(counter);
-		$(".main-body").append(multipleChoice);
-		var continueGame = $("<button>");
-		continueGame.attr("id","continue");
-		continueGame.text("next question");
-		multipleChoice.addClass("col-md-6", "answers");
-		var qSpace = $("<ol>");
-		qSpace.addClass("col-md-12");
-		for (i=0;i<=3;i++){
-			console.log(i);
-			console.log(counter);
-			qSpace.append("<li>" + trivia.questions[counter].answers[i]+ "</li>");
-			multipleChoice.append(qSpace);
-		}
-		multipleChoice.append(continueGame);
+		if (l<trivia.questions.length-1){
+			l++;
+			var multipleChoice = $("<div>");
+			console.log(l);
+			counter ++;
+			var currentQ = trivia.questions[counter].question;
+			$(".main-body").html("<h3>"+currentQ+"</h3>");
+			// console.log(counter);
+			$(".main-body").append(multipleChoice);
+			var continueGame = $("<button>");
+			continueGame.attr("id","continue");
+			continueGame.text("next question");
+			multipleChoice.addClass("col-md-6", "answers");
+			var qSpace = $("<ol>");
+			qSpace.addClass("col-md-12");
+			for (i=0;i<=3;i++){
+				// console.log(i);
+				// console.log(counter);
+				qSpace.append("<li>" + trivia.questions[counter].answers[i]+ "</li>");
+				multipleChoice.append(qSpace);
+			}
+			multipleChoice.append(continueGame);
 		// console.log(counter);
 		$("#continue").click(trivia.continue);
-	},
-
-	reset: function(){
-
-	},
-
-	timeUp: function(){
-
 	}
+},
+
+selction: function(){
+	console.log(this);
+	if ($(this).text() === questions[counter].rightAnswer){
+		console.log(this);
+	}
+},
+
+generateWin: function(){
+
+},
+
+generateLoss: function(){
+
+},
+
+clock: function(){
+
+},
+
+reset: function(){
+
+},
+
+timeUp: function(){
+
+}
 }
